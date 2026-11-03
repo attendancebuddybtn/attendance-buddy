@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Attendance Buddy – your biometric attendance, on time</title>
+<meta name="description" content="Attendance Buddy shows your biometric attendance on your phone: punch-in, 9-hour day, weekly hours, LOP and ULOP days, and on-time reminders. Free for Android.">
+<meta name="theme-color" content="#007367">
+<meta property="og:title" content="Attendance Buddy">
+<meta property="og:description" content="Your biometric attendance on your phone, with on-time reminders. Free for Android.">
+<meta property="og:image" content="icon-512.png">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<style>
+:root {
+  --brand: #007367; --brand-dark: #005047; --brand-soft: #e6f3f1; --ink: #14212b; --muted: #5b6770;
+  --line: #e4e8eb; --bg: #ffffff; --alt: #f6f8f9; --radius: 18px;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; color: var(--ink); background: var(--bg); font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+a { color: var(--brand); }
+.wrap { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+/* nav */
+nav.top { position: sticky; top: 0; z-index: 10; background: rgba(255,255,255,.92); backdrop-filter: saturate(1.4) blur(10px); border-bottom: 1px solid var(--line); }
+nav.top .wrap { display: flex; align-items: center; gap: 22px; height: 64px; }
+.logo { display: flex; align-items: center; gap: 10px; font-weight: 750; font-size: 17px; color: var(--ink); text-decoration: none; letter-spacing: -.01em; }
+.logo img { width: 32px; height: 32px; border-radius: 8px; }
+nav.top .links { display: flex; gap: 22px; margin-left: auto; }
+nav.top .links a { color: var(--muted); text-decoration: none; font-weight: 550; font-size: 15px; }
+nav.top .links a:hover { color: var(--ink); }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: var(--brand); color: #fff; text-decoration: none;
+  font-weight: 650; border-radius: 12px; padding: 12px 20px; transition: background .15s, transform .15s; border: 0; }
+.btn:hover { background: var(--brand-dark); }
+.btn:active { transform: translateY(1px); }
+.btn.small { padding: 8px 14px; font-size: 14px; border-radius: 10px; white-space: nowrap; }
+.logo { white-space: nowrap; }
+section[id] { scroll-margin-top: 72px; }
+.btn.ghost { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+.btn.ghost:hover { background: var(--alt); }
+@media (max-width: 720px) { nav.top .links { display: none; } nav.top .btn { margin-left: auto; } }
+
+/* hero */
+.hero { background: radial-gradient(1200px 500px at 85% -10%, #d9efec 0%, rgba(217,239,236,0) 60%), linear-gradient(#fff, #fff); padding: 64px 0 40px; overflow: hidden; }
+.hero .wrap { display: grid; grid-template-columns: 1.05fr .95fr; gap: 40px; align-items: center; }
+.eyebrow { display: inline-block; font-size: 13px; font-weight: 700; color: var(--brand); background: var(--brand-soft); padding: 5px 12px; border-radius: 99px; letter-spacing: .02em; }
+h1 { font-size: clamp(34px, 5.2vw, 54px); line-height: 1.08; margin: 16px 0 16px; letter-spacing: -.03em; }
+.lead { font-size: clamp(17px, 2vw, 19px); color: var(--muted); max-width: 34em; margin: 0 0 28px; }
+.cta { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+.cta .btn { font-size: 17px; padding: 15px 24px; }
+.meta { margin-top: 14px; color: var(--muted); font-size: 14px; }
+.phones { position: relative; height: 560px; -webkit-mask-image: linear-gradient(#000 78%, transparent); mask-image: linear-gradient(#000 78%, transparent); }
+.phone { position: absolute; width: 260px; border-radius: 38px; background: #0e1418; padding: 10px; box-shadow: 0 30px 60px rgba(16,40,40,.22), 0 8px 18px rgba(0,0,0,.12); }
+.phone img { display: block; width: 100%; border-radius: 30px; }
+.phone.one { right: 150px; top: 0; z-index: 2; }
+.phone.two { right: 0; top: 60px; transform: rotate(4deg); opacity: .97; }
+@media (max-width: 900px) {
+  .hero .wrap { grid-template-columns: 1fr; text-align: center; }
+  .lead { margin-left: auto; margin-right: auto; } .cta { justify-content: center; }
+  .phones { height: 470px; max-width: 420px; margin: 10px auto 0; width: 100%; }
+  .phone { width: 220px; } .phone.one { left: 0; right: auto; } .phone.two { right: 0; top: 50px; }
+}
+@media (max-width: 420px) { .phones { height: 400px; } .phone { width: 190px; border-radius: 30px; padding: 8px; } .phone img { border-radius: 24px; } }
+
+/* sections */
+section { padding: 72px 0; }
+section.alt { background: var(--alt); }
+h2 { font-size: clamp(26px, 3.4vw, 36px); letter-spacing: -.02em; margin: 0 0 10px; line-height: 1.15; }
+.sub { color: var(--muted); font-size: 17px; margin: 0 0 36px; max-width: 40em; }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+@media (max-width: 900px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
+.feature { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; }
+.feature .ic { width: 42px; height: 42px; border-radius: 12px; background: var(--brand-soft); color: var(--brand); display: grid; place-items: center; margin-bottom: 14px; }
+.feature h3 { margin: 0 0 6px; font-size: 17px; }
+.feature p { margin: 0; color: var(--muted); font-size: 15px; }
+.legend { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+.legend span { font-size: 13px; font-weight: 650; padding: 4px 10px; border-radius: 8px; }
+
+.steps { counter-reset: s; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+@media (max-width: 800px) { .steps { grid-template-columns: 1fr; } }
+.step { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; position: relative; }
+.step::before { counter-increment: s; content: counter(s); width: 34px; height: 34px; border-radius: 50%; background: var(--brand); color: #fff; font-weight: 800;
+  display: grid; place-items: center; margin-bottom: 12px; }
+.step h3 { margin: 0 0 6px; font-size: 17px; } .step p { margin: 0; color: var(--muted); font-size: 15px; }
+
+.install { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; }
+@media (max-width: 800px) { .install { grid-template-columns: 1fr; } }
+.card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; }
+.card h3 { margin: 0 0 10px; font-size: 18px; }
+ol.list { margin: 0; padding-left: 22px; } ol.list li { margin: 8px 0; }
+.tip { background: var(--brand-soft); border-radius: 12px; padding: 12px 14px; font-size: 14.5px; margin-top: 14px; }
+
+details { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 0 20px; margin-bottom: 10px; }
+summary { cursor: pointer; padding: 16px 0; font-weight: 650; list-style: none; display: flex; justify-content: space-between; gap: 12px; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; font-size: 22px; line-height: 1; color: var(--muted); }
+details[open] summary::after { content: "–"; }
+details p { margin: 0 0 16px; color: var(--muted); }
+
+.band { background: var(--brand); color: #fff; text-align: center; border-radius: 24px; padding: 48px 24px; }
+.band h2 { color: #fff; } .band p { opacity: .9; margin: 0 0 24px; }
+.band .btn { background: #fff; color: var(--brand-dark); font-size: 17px; padding: 15px 26px; }
+.band .btn:hover { background: #eef7f5; }
+
+footer { border-top: 1px solid var(--line); padding: 28px 0 40px; color: var(--muted); font-size: 14px; }
+ul.checks { list-style: none; margin: 0 0 6px; padding: 0; }
+ul.checks li { padding: 7px 0 7px 30px; position: relative; border-top: 1px solid var(--line); }
+ul.checks li:first-child { border-top: 0; }
+ul.checks li::before { content: ""; position: absolute; left: 2px; top: 11px; width: 18px; height: 18px; border-radius: 50%; background: var(--brand-soft)
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23007367' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center/12px no-repeat; }
+.note { color: var(--muted); font-size: 14.5px; margin: 6px 0 16px; }
+.card .btn { margin: 4px 0 14px; }
+/* iPhone visitors see the iPhone option first */
+.ios-only { display: none !important; }
+html.ios .ios-only { display: inline-flex !important; } html.ios .android-only { display: none !important; }
+footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+</style>
+</head>
+<body>
+
+<nav class="top">
+  <div class="wrap">
+    <a class="logo" href="#"><img src="icon-192.png" alt="">Attendance Buddy</a>
+    <div class="links"><a href="#features">Features</a><a href="#how">How it works</a><a href="#install">Install</a><a href="#iphone">iPhone</a><a href="#faq">FAQ</a></div>
+    <a class="btn small android-only" href="AttendanceBuddy.apk" download>Download</a>
+    <a class="btn small ios-only" href="#iphone">iPhone app</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Free · Android app · iPhone reminders</span>
+      <h1>Your biometric attendance, always on time.</h1>
+      <p class="lead">See your punch-in, when your 9 hours are done, this week's hours and every LOP or ULOP day at a glance. Get a reminder before it's too late, even when the app is closed.</p>
+      <div class="cta">
+        <a class="btn ios-only" href="#iphone">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10 21h4"/></svg>
+          Get the iPhone app</a>
+        <a class="btn android-only" href="AttendanceBuddy.apk" download>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+          Download for Android</a>
+        <a class="btn ghost android-only" href="#install">How to install</a>
+        <a class="btn ghost ios-only" href="AttendanceBuddy.apk" download>Android app</a>
+      </div>
+      <div class="meta" id="ver">Latest version · Android 8 and newer</div>
+      <div class="meta"><span class="ios-only">Free on iPhone too – installed with your own Apple ID.</span> <a class="android-only" href="#iphone">On iPhone? Get the app free →</a></div>
+    </div>
+    <div class="phones" aria-hidden="true">
+      <div class="phone one"><img src="shot-today.jpg" alt="" width="390" height="844"></div>
+      <div class="phone two"><img src="shot-days.jpg" alt="" width="390" height="844"></div>
+    </div>
+  </div>
+</header>
+
+<section id="features">
+  <div class="wrap">
+    <h2>Everything about your attendance, in one place</h2>
+    <p class="sub">It reads your own biometric page with your own login and applies the attendance rules for you.</p>
+    <div class="grid">
+      <div class="feature"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+        <h3>Today at a glance</h3><p>Punch-in time, on time or late, when your 9 hours are complete, and live worked hours.</p></div>
+      <div class="feature"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10 21h4"/></svg></div>
+        <h3>Reminders on time</h3><p>Punch-in reminder, last call before 10:00, 9 hours complete, punch-out before midnight – exactly when they're due.</p></div>
+      <div class="feature"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 19V5M4 19h16M8 15l3-4 3 2 5-6"/></svg></div>
+        <h3>Weekly hours</h3><p>Your week against its target (45 h, or 54 h with a working Saturday), and how long to stay to reach it.</p></div>
+      <div class="feature"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></div>
+        <h3>Every day, clearly coloured</h3><p>The whole month from the 21st to the 20th, in the same colours as the portal:</p>
+        <div class="legend"><span style="background:#e3f4ea;color:#145c33">Present</span><span style="background:#d99695;color:#4a1010">ULOP</span>
+          <span style="background:#f8cbad;color:#6e230a">LOP</span><span style="background:#ffeeba;color:#5e4800">Week-Off / Holiday</span><span style="background:#d6dbdf;color:#2f3a44">Incomplete</span></div></div>
+      <div class="feature"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg></div>
+        <h3>Never miss the leave deadline</h3><p>Days that need Casual, Medical or Academic leave (or On Duty) are listed, with a reminder before the 20th.</p></div>
+      <div class="feature"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
+        <h3>Private by design</h3><p>No account, no server. Your login and attendance stay on your phone.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="how" class="alt">
+  <div class="wrap">
+    <h2>How it works</h2>
+    <p class="sub">Three steps, about two minutes.</p>
+    <div class="steps">
+      <div class="step"><h3>Install the app</h3><p>Download the APK from this page and install it on your Android phone.</p></div>
+      <div class="step"><h3>Log in once</h3><p>Sign in with your university email inside the app. The login is kept, even after restarting your phone.</p></div>
+      <div class="step"><h3>Allow on-time alerts</h3><p>Tap Allow on the "Make alerts on time" card. From then on the app checks for you, even when it's closed.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="install">
+  <div class="wrap">
+    <h2>Install on Android</h2>
+    <p class="sub">The app isn't on the Play Store yet, so Android asks you to confirm the install once.</p>
+    <div class="install">
+      <div class="card">
+        <h3>Install</h3>
+        <ol class="list">
+          <li>Tap <b>Download for Android</b> and open <b>AttendanceBuddy.apk</b>.</li>
+          <li>If asked, allow <b>Install unknown apps</b> for your browser, go back and tap <b>Install</b>.</li>
+          <li>Open Attendance Buddy and tap <b>Log in</b>.</li>
+          <li>Sign in with your university email. The app opens your attendance by itself.</li>
+        </ol>
+      </div>
+      <div class="card">
+        <h3>Get alerts exactly on time</h3>
+        <ol class="list">
+          <li>On the <b>Make alerts on time</b> card, tap <b>Allow</b> for Notifications, Alarms &amp; reminders and Unrestricted battery.</li>
+          <li><b>Samsung:</b> Settings → Battery → Background usage limits → <b>Never sleeping apps</b> → add Attendance Buddy.</li>
+        </ol>
+        <div class="tip"><b>Updating:</b> the app tells you when a new version is out. Tap <b>Update</b>, download and install over the old app – your login stays.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="iphone" class="alt">
+  <div class="wrap">
+    <h2>On iPhone</h2>
+    <p class="sub">The same app, free: you install it with your own Apple ID through SideStore or AltStore – no App Store and no payment. Or, without installing anything, add the reminders to your Calendar.</p>
+    <div class="install">
+      <div class="card">
+        <h3>The app – free, with your Apple ID</h3>
+        <ol class="list">
+          <li>Install <a href="https://sidestore.io" target="_blank" rel="noopener"><b>SideStore</b></a> (it refreshes on the phone) or <a href="https://altstore.io" target="_blank" rel="noopener"><b>AltStore</b></a>, following their guide. It needs a computer once and your free Apple ID.</li>
+          <li>Turn on <b>Settings → Privacy &amp; Security → Developer Mode</b> (the iPhone restarts).</li>
+          <li>Tap <b>Add to SideStore</b> or <b>Add to AltStore</b> below, then install <b>Attendance Buddy</b>.</li>
+          <li>Open it, allow notifications and log in with your university email.</li>
+        </ol>
+        <div class="cta" style="margin-top:14px">
+          <a class="btn" href="sidestore://source?url=https://attendancebuddybtn.github.io/attendance-buddy/altstore.json">Add to SideStore</a>
+          <a class="btn ghost" href="altstore://source?url=https://attendancebuddybtn.github.io/attendance-buddy/altstore.json">Add to AltStore</a>
+        </div>
+        <div class="tip">Free Apple IDs sign apps for 7 days at a time – SideStore / AltStore renew it for you, and show new versions as updates. Buttons not working? In SideStore / AltStore add this source: <b style="overflow-wrap:anywhere">attendancebuddybtn.github.io/attendance-buddy/altstore.json</b>. Using a computer? <a href="AttendanceBuddy.ipa" download>Download the .ipa</a> for Sideloadly.</div>
+      </div>
+      <div class="card">
+        <h3>Or no install: Calendar reminders</h3>
+        <ul class="checks">
+          <li><b>9:30 and 9:50 AM</b> – punch in by 10:00</li>
+          <li><b>6:00 PM</b> – punch out before you leave</li>
+          <li><b>18th of every month</b> – apply leave by the 20th</li>
+        </ul>
+        <p class="note">Monday to Friday, plus the 1st, 3rd and 5th Saturdays (the usual working Saturdays).</p>
+        <a class="btn" href="reminders.ics">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4M12 13v5M9.5 15.5h5"/></svg>
+          Add to iPhone Calendar</a>
+        <ol class="list">
+          <li>Open this page in <b>Safari</b> and tap <b>Add to iPhone Calendar</b>.</li>
+          <li>Tap <b>Add All</b>, choose a calendar and tap <b>Done</b>.</li>
+        </ol>
+        <div class="tip">Holiday or leave day? Just dismiss the reminder. To change a time, open the event in Calendar, tap <b>Edit</b>, change it and choose <b>Save for future events</b>.</div>
+      </div>
+      <div class="card">
+        <h3>Optional: an alert when you leave campus</h3>
+        <ol class="list">
+          <li>Open the <b>Shortcuts</b> app → <b>Automation</b> → <b>+</b> → <b>Leave</b>.</li>
+          <li>Choose your campus as the location, select <b>Run Immediately</b> and tap <b>Next</b>.</li>
+          <li>Tap <b>New Blank Automation</b> → <b>Add Action</b> → <b>Show Notification</b>.</li>
+          <li>Type <b>Punch out on the biometric before you go</b> and tap <b>Done</b>.</li>
+        </ol>
+        <div class="tip">Needs iOS 17 or newer. Allow location access for Shortcuts when the iPhone asks.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <h2>Questions</h2>
+    <p class="sub">Short answers to what people ask most.</p>
+    <details><summary>Is my login or data sent anywhere?</summary>
+      <p>No. You sign in inside the app, the same way as in a browser. The app only reads your own attendance page, and everything stays on your phone. There is no server and no account.</p></details>
+    <details><summary>Why does Android warn me when installing?</summary>
+      <p>Android shows this for every app that isn't installed from the Play Store. Allow it once for your browser and install.</p></details>
+    <details><summary>Alerts come late on my phone. What can I do?</summary>
+      <p>Allow all three items on the "Make alerts on time" card. On Samsung, also add the app to Never sleeping apps (Settings → Battery → Background usage limits). Some phones pause apps to save battery unless you allow this.</p></details>
+    <details><summary>Does it follow the attendance rules?</summary>
+      <p>Yes, exactly as the portal shows them: on time between 06:00 and 10:00, 9 hours a day (8 hours minimum), the weekly target from Monday to Saturday, Week-Off and Holiday days, ULOP and LOP, and the leave deadline on the 20th.</p></details>
+    <details><summary>Is there an iPhone app?</summary>
+      <p>Yes, free. Apple lets anyone install apps on their own iPhone with a free Apple ID; SideStore and AltStore do that for you and renew it every 7 days (a free Apple ID can have 3 such apps). See <a href="#iphone">On iPhone</a>. iOS checks GITAM in the background less often than Android, so the app also sets the day's reminders in advance, and refreshes whenever you open it.</p></details>
+    <details><summary>Does it show my leave requests?</summary>
+      <p>Yes. Each time you open the app it reads your Leave, On Duty and Missing Biometric requests and shows their status – Pending at Supervisor, Pending at HOD or Approved – on that day. You get a notification when one moves on or is approved.</p></details>
+    <details><summary>How do I update?</summary>
+      <p>The app shows "New version available" on the Today screen. Tap Update, download from this page and install over the old app. Your login and history are kept.</p></details>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="band">
+      <h2>Never miss a punch again.</h2>
+      <p>Free, private, and made for students.</p>
+      <a class="btn android-only" href="AttendanceBuddy.apk" download>Download for Android</a>
+      <a class="btn ios-only" href="#iphone">Get the iPhone app</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="yr">2026</span> Attendance Buddy · Designed &amp; developed by <b>BTN</b></span>
+    <span>Help: <a href="mailto:attendancebuddybtn@gmail.com">attendancebuddybtn@gmail.com</a></span>
+    <span>Independent app, not affiliated with or endorsed by any university.</span>
+  </div>
+</footer>
+
+<script>
+if (/iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1))
+  document.documentElement.classList.add("ios");
+document.getElementById("yr").textContent = new Date().getFullYear();
+fetch("version.json", { cache: "no-store" }).then((r) => r.json()).then((v) => {
+  const d = new Date(v.date).toLocaleDateString([], { day: "numeric", month: "short", year: "numeric" });
+  document.getElementById("ver").textContent = `Version ${v.name} · updated ${d} · Android 8 and newer`;
+}).catch(() => {});
+</script>
+</body>
+</html>

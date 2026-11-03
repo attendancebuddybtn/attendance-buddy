@@ -1,0 +1,45 @@
+{
+ "name": "Attendance Buddy",
+ "identifier": "io.github.attendancebuddybtn",
+ "subtitle": "Free, for students",
+ "sourceURL": "https://attendancebuddybtn.github.io/attendance-buddy/altstore.json",
+ "website": "https://attendancebuddybtn.github.io/attendance-buddy/",
+ "iconURL": "https://attendancebuddybtn.github.io/attendance-buddy/icon-192.png",
+ "tintColor": "007367",
+ "apps": [
+  {
+   "name": "Attendance Buddy",
+   "bundleIdentifier": "app.attendancebuddy",
+   "developerName": "BTN",
+   "subtitle": "Your biometric attendance, on time.",
+   "localizedDescription": "Your biometric attendance on your iPhone: punch-in, when your 9 hours are done, weekly hours, LOP and ULOP days, leave request status and reminders. Free, private, made for students.",
+   "iconURL": "https://attendancebuddybtn.github.io/attendance-buddy/icon-512.png",
+   "tintColor": "007367",
+   "category": "utilities",
+   "screenshotURLs": [
+    "https://attendancebuddybtn.github.io/attendance-buddy/shot-today.jpg",
+    "https://attendancebuddybtn.github.io/attendance-buddy/shot-days.jpg"
+   ],
+   "version": "1.18",
+   "versionDate": "2026-11-03T17:53:36Z",
+   "downloadURL": "https://attendancebuddybtn.github.io/attendance-buddy/AttendanceBuddy.ipa",
+   "size": 196204,
+   "versions": [
+    {
+     "version": "1.18",
+     "buildVersion": "18",
+     "date": "2026-11-03T17:53:36Z",
+     "size": 196204,
+     "minOSVersion": "15.0",
+     "downloadURL": "https://attendancebuddybtn.github.io/attendance-buddy/AttendanceBuddy.ipa",
+     "localizedDescription": "Latest version."
+    }
+   ],
+   "appPermissions": {
+    "entitlements": [],
+    "privacy": {}
+   }
+  }
+ ],
+ "news": []
+}
