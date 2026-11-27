@@ -1,0 +1,13 @@
+{
+ "v": 1,
+ "items": [
+  {
+   "type": "notice",
+   "date": "2026-11-27",
+   "until": "2026-11-30",
+   "title": "GITAM's new hours rule (from 23 Nov)",
+   "text": "Worked hours count only from 06:00 to 18:00. You can punch out later, but time after 18:00 isn't added. Punch in by 10:00 to reach 8 h.",
+   "id": "ef4db2706e"
+  }
+ ]
+}
